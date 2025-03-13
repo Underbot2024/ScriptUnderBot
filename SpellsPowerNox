@@ -8,8 +8,9 @@ local allowedNames = {
 }
 
 if not table.find(allowedNames, name(), true) then
-    --Made By VivoDibra
-  return modules.game_textwindow.onGameEditText(0, 6279, 10000, name() ..", Tu no tienes permitido usar estos scripts.", "Scripts Underbot", "")
+  -- Mostrar un cuadro de informacion en lugar de una ventana de texto
+  modules.corelib.displayInfoBox(tr("Error"), name() .. ", Tu no tienes permitido usar estos scripts.", "Scripts Underbot")
+  return
 end
 
 modules.game_textmessage.displayGameMessage("Scripts Protegidos Cargados.")
