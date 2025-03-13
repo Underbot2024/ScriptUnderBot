@@ -2,9 +2,15 @@ setDefaultTab("Tools")
 -- Protege tus macros si el name de el player al que le pasaste los macros no esta en la lista no podra usarlos,este script lo puedes obfuscar y asi no podran editarlo o pasarlo a otros player 
 
 local allowedNames = {
+  "Power Abused",
   "Power Abuser",
-  "name2",
-  "name3",
+  "Ilegal God",
+  "Illegal Power",
+  "Dios",
+  "Supreme",
+  "Extssy",
+  "Power Strike",
+  "Amazing Power",
 }
 
 if not table.find(allowedNames, name(), true) then
@@ -209,6 +215,7 @@ end
 -- Boton para abrir la ventana
 local openButton = UI.Button("Magias Paladin", function()
     configWindow:show()
+    configWindow:setFocusable(false)
     configWindow:raise()
     configWindow:focus()
 end)
@@ -512,6 +519,7 @@ end
 -- Boton para abrir la ventana
 local openButton = UI.Button("Magias Knight", function()
     configWindow:show()
+    configWindow:setFocusable(false)
     configWindow:raise()
     configWindow:focus()
 end)
@@ -1305,6 +1313,7 @@ end
 -- Botón para abrir la ventana
 local openButton = UI.Button("Magias Druid", function()
     configWindow:show()
+    configWindow:setFocusable(false)
     configWindow:raise()
     configWindow:focus()
 end)
