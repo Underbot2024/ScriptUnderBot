@@ -1,3 +1,16 @@
+local allowedNames = {
+  "name1",
+  "name2",
+  "name3",
+}
+
+if not table.find(allowedNames, name(), true) then
+    --Made By VivoDibra
+  return modules.game_textwindow.onGameEditText(0, 6279, 10000, name() ..", Tu no tienes permitido usar estos scripts.", "Scripts Underbot", "")
+end
+
+modules.game_textmessage.displayGameMessage("Scripts Protegidos Cargados.")
+
 -- Alejar de players
 macro(1000, "Alejar De Players", function()
   if not CaveBot.isOn() then return end
@@ -12,12 +25,3 @@ macro(1000, "Alejar De Players", function()
     end
   end
 end)
-
--- Full Addon
-macro(100, "Full Addon", function()
-    local myOutfit = player:getOutfit()
-    if myOutfit.addons ~= 3 then
-      myOutfit.addons = 3
-      player:setOutfit(myOutfit)
-    end
-  end)
