@@ -1,3 +1,6 @@
+setDefaultTab("Tools")
+-- Protege tus macros si el name de el player al que le pasaste los macros no esta en la lista no podra usarlos,este script lo puedes obfuscar y asi no podran editarlo o pasarlo a otros player 
+
 local allowedNames = {
   "Mexcaly",
   "name2",
@@ -11,12 +14,11 @@ end
 
 modules.game_textmessage.displayGameMessage("Scripts Protegidos Cargados.")
 
-setDefaultTab("Tools")
-
+-- Magias Paladin
 g_ui.loadUIFromString([[
 ConfigWindow < MainWindow
   size: 150 200
---Script By Undersky
+
   Label
     id: titleMagias
     text: SPELLS   PALADIN
@@ -243,7 +245,6 @@ macro(50, function()
 
     titleMagias:setColoredText(coloredText)
 end)
-
 -- Magias Knight
 g_ui.loadUIFromString([[
 ConfigWindow < MainWindow
@@ -547,7 +548,6 @@ macro(50, function()
 
     titleMagias:setColoredText(coloredText)
 end)
-
 -- Magias Sorcerer
 g_ui.loadUIFromString([[
 ConfigWindow < MainWindow
@@ -789,7 +789,7 @@ local function turnToTarget()
     elseif diffx == 0 and diffy < 0 then turn(0) turned = true -- Arriba
     end 
 
-    if turned then delay(200) end -- Espera 200ms para asegurarse de que giroantes de lanzar el hechizo
+    if turned then delay(200) end -- Espera 200ms para asegurarse de que giró antes de lanzar el hechizo
     return turned
 end
 
@@ -824,7 +824,7 @@ local function turnToTarget()
     elseif diffx == 0 and diffy < 0 then turn(0) turned = true -- Arriba
     end 
 
-    if turned then delay(200) end -- Espera 200ms para asegurarse de que giroantes de lanzar el hechizo
+    if turned then delay(200) end -- Espera 200ms para asegurarse de que giró antes de lanzar el hechizo
     return turned
 end
 
@@ -905,7 +905,7 @@ configWindow.closeButton.onClick = function(widget)
     configWindow:hide()
 end
 
--- Boton para abrir la ventana
+-- Botón para abrir la ventana
 local openButton = UI.Button("Magias Sorcerer", function()
     configWindow:show()
     configWindow:raise()
@@ -913,7 +913,7 @@ local openButton = UI.Button("Magias Sorcerer", function()
 end)
 openButton:setColor("#00FFFF") -- Color cian
 
--- Animacion de brillo para el titulo
+-- Animación de brillo para el título
 local titleMagias = configWindow.titleMagias
 local text = "SPELLS   SORCERER"
 local glowPosition = 1
@@ -945,7 +945,6 @@ macro(50, function()
 
     titleMagias:setColoredText(coloredText)
 end)
-
 -- Magias Druid
 g_ui.loadUIFromString([[
 ConfigWindow < MainWindow
@@ -1181,7 +1180,7 @@ local function turnToTarget()
     elseif diffx == 0 and diffy < 0 then turn(0) turned = true -- Arriba
     end 
 
-    if turned then delay(200) end -- Espera 200ms para asegurarse de que giroantes de lanzar el hechizo
+    if turned then delay(200) end -- Espera 200ms para asegurarse de que giró antes de lanzar el hechizo
     return turned
 end
 
@@ -1216,7 +1215,7 @@ local function turnToTarget()
     elseif diffx == 0 and diffy < 0 then turn(0) turned = true -- Arriba
     end 
 
-    if turned then delay(200) end -- Espera 200ms para asegurarse de que giroantes de lanzar el hechizo
+    if turned then delay(200) end -- Espera 200ms para asegurarse de que giró antes de lanzar el hechizo
     return turned
 end
 
@@ -1242,7 +1241,7 @@ end)
 local masres = macro(2000, "Mas res", function()
 say("exura gran mas res")
 end, false)
--- Script By Undersky
+
 -- Agregar macros a la lista
 table.insert(listaMacros, antipkfrigo)
 table.insert(listaMacros, antipktera)
@@ -1301,7 +1300,7 @@ configWindow.closeButton.onClick = function(widget)
     configWindow:hide()
 end
 
--- Boton para abrir la ventana
+-- Botón para abrir la ventana
 local openButton = UI.Button("Magias Druid", function()
     configWindow:show()
     configWindow:raise()
@@ -1309,12 +1308,12 @@ local openButton = UI.Button("Magias Druid", function()
 end)
 openButton:setColor("#00FFFF") -- Color cian
 
--- Animacion de brillo para el titulo
+-- Animación de brillo para el título
 local titleMagias = configWindow.titleMagias
 local text = "SPELLS   DRUID"
 local glowPosition = 1
 local glowDirection = 1
---- Script By Undersky
+
 macro(50, function()
     local numChars = #text
     local glowRange = math.max(1, math.floor(numChars / 10)) 
