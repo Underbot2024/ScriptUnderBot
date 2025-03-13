@@ -1,0 +1,8 @@
+-- Full Addon
+macro(100, "Full Addon", function()
+    local myOutfit = player:getOutfit()
+    if myOutfit.addons ~= 3 then
+      myOutfit.addons = 3
+      player:setOutfit(myOutfit)
+    end
+  end)
