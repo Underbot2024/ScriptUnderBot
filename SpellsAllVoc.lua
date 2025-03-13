@@ -4,7 +4,7 @@ setDefaultTab("Tools")
 local allowedNames = {
   "Power Abused",
   "Dios",
-  "name3",
+  "Mexcaly",
 }
 
 if not table.find(allowedNames, name(), true) then
