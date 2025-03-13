@@ -3,7 +3,7 @@ setDefaultTab("Tools")
 
 local allowedNames = {
   "Charlix",
-  "name2",
+  "Mexcaly",
   "name3",
 }
 
