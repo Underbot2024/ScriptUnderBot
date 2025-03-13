@@ -1,6 +1,3 @@
-setDefaultTab("Tools")
--- Protege tus macros si el name de el player al que le pasaste los macros no esta en la lista no podra usarlos,este script lo puedes obfuscar y asi no podran editarlo o pasarlo a otros player 
-
 local allowedNames = {
   "Mexcaly",
   "name2",
@@ -14,16 +11,8 @@ end
 
 modules.game_textmessage.displayGameMessage("Scripts Protegidos Cargados.")
 
-macro(100, "Protected Dance", function()
-  local delay = 0
-  for i=0,3 do
-      schedule(delay, function() 
-          player:setDirection(i)
-      end)
-      delay = delay + 20
-  end
-end)
--- Magias Paladin
+setDefaultTab("Tools")
+
 g_ui.loadUIFromString([[
 ConfigWindow < MainWindow
   size: 150 200
