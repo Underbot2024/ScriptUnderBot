@@ -2,8 +2,8 @@ setDefaultTab("Tools")
 -- Protege tus macros si el name de el player al que le pasaste los macros no esta en la lista no podra usarlos,este script lo puedes obfuscar y asi no podran editarlo o pasarlo a otros player 
 
 local allowedNames = {
-  "Mexcaly",
-  "name2",
+  "Power Abused",
+  "Dios",
   "name3",
 }
 
