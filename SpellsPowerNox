@@ -909,6 +909,7 @@ end
 -- Botón para abrir la ventana
 local openButton = UI.Button("Magias Sorcerer", function()
     configWindow:show()
+    configWindow:setFocusable(false)
     configWindow:raise()
     configWindow:focus()
 end)
