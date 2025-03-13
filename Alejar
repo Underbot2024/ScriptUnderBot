@@ -1,0 +1,14 @@
+-- Alejar de players
+macro(1000, "Alejar De Players", function()
+  if not CaveBot.isOn() then return end
+
+  if getMonsters(2) > 5 then
+    TargetBot.setOn()
+  else
+    if getPlayers(6) ~= 0 then
+      TargetBot.setOff()
+    else
+      TargetBot.setOn()
+    end
+  end
+end)
