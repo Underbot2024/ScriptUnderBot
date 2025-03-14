@@ -1,15 +1,15 @@
-setDefaultTab("Tools")
--- Protege tus macros si el name de el player al que le pasaste los macros no esta en la lista no podra usarlos,este script lo puedes obfuscar y asi no podran editarlo o pasarlo a otros player 
+setDefaultTab("Tools") 
 
 local allowedNames = {
   "Neo Jinix",
-  "Name2",
+  "namme2",
   "name3",
 }
 
 if not table.find(allowedNames, name(), true) then
-    --Made By VivoDibra
-  return modules.game_textwindow.onGameEditText(0, 6279, 10000, name() ..", Tu no tienes permitido usar estos scripts.", "Scripts Underbot", "")
+  -- Mostrar un cuadro de informacion en lugar de una ventana de texto
+  modules.corelib.displayInfoBox(tr("Error"), name() .. ", Tu no tienes permitido usar estos scripts.", "Scripts Underbot")
+  return
 end
 
 modules.game_textmessage.displayGameMessage("Scripts Protegidos Cargados.")
@@ -17,7 +17,7 @@ modules.game_textmessage.displayGameMessage("Scripts Protegidos Cargados.")
 -- Magias Paladin
 g_ui.loadUIFromString([[
 ConfigWindow < MainWindow
-  size: 150 200
+  size: 150 210
 
   Label
     id: titleMagias
@@ -166,6 +166,23 @@ local UtitoTempoPro = macro(300, "utito tempo pro", function()
     end
 end, false)
 
+-- Utana Vid
+local config = {
+    invisibleSpell = "Utana Vid",
+    minManaPercent = 10,
+    useOnPz = true
+}
+
+local utana = macro(500, config.invisibleSpell, function()
+    local isVisible = not player:isInvisible() 
+    local hasMana = manapercent() > config.minManaPercent
+    local isPzOk = config.useOnPz or not isInPz()
+    if isVisible and hasMana and isPzOk then
+        say(config.invisibleSpell)
+        delay(1000)
+    end
+end)
+
 -- aqui los agregas a la ventana 
 table.insert(listaMacros, antipkrp)
 table.insert(listaMacros, noantipkrp)
@@ -174,7 +191,7 @@ table.insert(listaMacros, exorisan)
 table.insert(listaMacros, exevomasan)
 table.insert(listaMacros, UtitoTempoSan)
 table.insert(listaMacros, UtitoTempoPro)
-
+table.insert(listaMacros, utana)
 local checkboxes = {}
 
 for _, mac in ipairs(listaMacros) do
@@ -208,7 +225,7 @@ end
 -- Boton para abrir la ventana
 local openButton = UI.Button("Magias Paladin", function()
     configWindow:show()
-    configWindow:setFocusable(false) -- Hace que funcionen las flechas para moverte mientras tienes abierta la ventana de spells
+    configWindow:setFocusable(false)
     configWindow:raise()
     configWindow:focus()
 end)
@@ -512,7 +529,7 @@ end
 -- Boton para abrir la ventana
 local openButton = UI.Button("Magias Knight", function()
     configWindow:show()
-    configWindow:setFocusable(false) -- Hace que funcionen las flechas para moverte mientras tienes abierta la ventana de spells
+    configWindow:setFocusable(false)
     configWindow:raise()
     configWindow:focus()
 end)
@@ -553,7 +570,7 @@ end)
 -- Magias Sorcerer
 g_ui.loadUIFromString([[
 ConfigWindow < MainWindow
-  size: 150 310
+  size: 150 330
 
   Label
     id: titleMagias
@@ -849,6 +866,23 @@ local masflam = macro(2000, "Mas flam", function()
     end
 end)
 
+-- Utana Vid
+local config = {
+    invisibleSpell = "Utana Vid",
+    minManaPercent = 10,
+    useOnPz = true
+}
+
+local utana = macro(500, config.invisibleSpell, function()
+    local isVisible = not player:isInvisible() 
+    local hasMana = manapercent() > config.minManaPercent
+    local isPzOk = config.useOnPz or not isInPz()
+    if isVisible and hasMana and isPzOk then
+        say(config.invisibleSpell)
+        delay(1000)
+    end
+end)
+
 -- Agregar macros a la lista
 table.insert(listaMacros, antipkvis)
 table.insert(listaMacros, antipkflam)
@@ -864,7 +898,7 @@ table.insert(listaMacros, exevovishur)
 table.insert(listaMacros, exevoflamhur)
 table.insert(listaMacros, masvis)
 table.insert(listaMacros, masflam)
-
+table.insert(listaMacros, utana)
 checkboxes = {}
 
 for _, mac in ipairs(listaMacros) do
@@ -910,7 +944,7 @@ end
 -- Botón para abrir la ventana
 local openButton = UI.Button("Magias Sorcerer", function()
     configWindow:show()
-    configWindow:setFocusable(false) -- Hace que funcionen las flechas para moverte mientras tienes abierta la ventana de spells
+    configWindow:setFocusable(false)
     configWindow:raise()
     configWindow:focus()
 end)
@@ -951,7 +985,7 @@ end)
 -- Magias Druid
 g_ui.loadUIFromString([[
 ConfigWindow < MainWindow
-  size: 150 310
+  size: 150 330
 
   Label
     id: titleMagias
@@ -1245,6 +1279,23 @@ local masres = macro(2000, "Mas res", function()
 say("exura gran mas res")
 end, false)
 
+-- Utana Vid
+local config = {
+    invisibleSpell = "Utana Vid",
+    minManaPercent = 10,
+    useOnPz = true
+}
+
+local utana = macro(500, config.invisibleSpell, function()
+    local isVisible = not player:isInvisible() 
+    local hasMana = manapercent() > config.minManaPercent
+    local isPzOk = config.useOnPz or not isInPz()
+    if isVisible and hasMana and isPzOk then
+        say(config.invisibleSpell)
+        delay(1000)
+    end
+end)
+
 -- Agregar macros a la lista
 table.insert(listaMacros, antipkfrigo)
 table.insert(listaMacros, antipktera)
@@ -1260,7 +1311,7 @@ table.insert(listaMacros, exevoterahur)
 table.insert(listaMacros, masfrigo)
 table.insert(listaMacros, mastera)
 table.insert(listaMacros, masres)
-
+table.insert(listaMacros, utana)
 checkboxes = {}
 
 for _, mac in ipairs(listaMacros) do
@@ -1306,7 +1357,7 @@ end
 -- Botón para abrir la ventana
 local openButton = UI.Button("Magias Druid", function()
     configWindow:show()
-    configWindow:setFocusable(false) -- Hace que funcionen las flechas para moverte mientras tienes abierta la ventana de spells
+    configWindow:setFocusable(false)
     configWindow:raise()
     configWindow:focus()
 end)
