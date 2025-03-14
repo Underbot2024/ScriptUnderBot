@@ -2,7 +2,7 @@ setDefaultTab("Tools")
 
 local allowedNames = {
   "Neo Jinix",
-  "namme2",
+  "name2",
   "name3",
 }
 
