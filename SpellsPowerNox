@@ -1400,3 +1400,315 @@ macro(50, function()
 
     titleMagias:setColoredText(coloredText)
 end)
+
+
+-- Magias Druid
+g_ui.loadUIFromString([[
+ConfigWindow < MainWindow
+  size: 150 140
+
+  Label
+    id: titleMagias
+    text: SPELLS   SPAM
+    font: verdana-11px-rounded
+    color: #a73ec1
+    margin-top: -30
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+
+  Panel
+    id: lista
+    anchors.fill: parent
+    anchors.bottom: closeButton.top
+    layout:
+      type: grid
+      cell-size: 110 15
+      cell-spacing: 2
+
+  Button
+    id: closeButton
+    text: Close
+    font: cipsoftFont
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    size: 45 21
+]])
+
+local panelName = "config"
+if not storage[panelName] then
+  storage[panelName] = {
+    enabled = false,
+  }
+end
+
+local config = storage[panelName]
+
+local rootWidget = g_ui.getRootWidget()
+local configWindow = UI.createWindow('ConfigWindow', rootWidget)
+configWindow:hide()
+
+local listaMacros = {}
+
+-- Macros Spells Spam
+
+local exevofrigohur = macro(1000, "Frigo Hur", function()
+    say("exevo frigo hur")
+end)
+
+local exevoterahur = macro(1000, "Tera Hur", function()
+    say("exevo tera hur")
+end)
+
+local masfrigo = macro(1000, "Mas frigo", function()
+    say("exevo gran mas frigo")
+end)
+
+local mastera = macro(1000, "Mas tera", function()
+    say("exevo gran mas tera")
+end)
+
+local gfr = macro(1000, "GFR rune", function()  
+    if g_game.isAttacking() then  
+        local attackingCreature = g_game.getAttackingCreature()
+        if attackingCreature and findItem(3191) then  -- Verifica si tienes la runa
+            g_game.useInventoryItemWith(3191, attackingCreature)  
+        end
+    end  
+end, false)
+
+local aoe = macro(1000, "AOE rune", function()  
+    if g_game.isAttacking() then  
+        local attackingCreature = g_game.getAttackingCreature()
+        if attackingCreature and findItem(3161) then  -- Verifica si tienes la runa
+            g_game.useInventoryItemWith(3161, attackingCreature)  
+        end
+    end  
+end, false)
+
+-- Agregar macros a la lista
+
+table.insert(listaMacros, exevofrigohur)
+table.insert(listaMacros, exevoterahur)
+table.insert(listaMacros, masfrigo)
+table.insert(listaMacros, mastera)
+table.insert(listaMacros, gfr)
+table.insert(listaMacros, aoe)
+checkboxes = {}
+
+for _, mac in ipairs(listaMacros) do
+    local checkbox = g_ui.createWidget("CheckBox", configWindow.lista)
+    checkbox:setText(mac.switch:getText())
+    checkbox.onCheckChange = function(wid, isChecked)
+        mac.setOn(isChecked)
+    end
+    checkbox:setChecked(mac.isOn())
+    mac.switch:setVisible(false)
+    table.insert(checkboxes, checkbox)
+    
+    -- Tooltip para "Antipk"
+    if mac.switch:getText() == "Antipk" then
+        checkbox:setTooltip("Este hechizo lanza Sd & si hay mas de 3 monster lanza Mas tera Cuidando no sacar Pk.")
+    end
+end
+
+configWindow.closeButton.onClick = function(widget)
+    configWindow:hide()
+end
+
+-- Boton para abrir la ventana
+local openButton = UI.Button("Spells Druid Spam", function()
+    configWindow:show()
+    configWindow:setFocusable(false)
+    configWindow:raise()
+    configWindow:focus()
+end)
+openButton:setColor("#00FFFF") -- Color cian
+
+-- Animacion de brillo para el titulo
+local titleMagias = configWindow.titleMagias
+local text = "SPELLS   SPAM"
+local glowPosition = 1
+local glowDirection = 1
+
+macro(50, function()
+    local numChars = #text
+    local glowRange = math.max(1, math.floor(numChars / 10)) 
+    local coloredText = {}
+
+    for i = 1, numChars do
+        local char = text:sub(i, i)
+        local color = "#a73ec1" -- Color base
+        if math.abs(i - glowPosition) <= glowRange then
+            color = "#dfbae9" -- Color de brillo
+        end
+        table.insert(coloredText, char)
+        table.insert(coloredText, color)
+    end
+
+    glowPosition = glowPosition + glowDirection
+    if glowPosition > numChars then
+        glowPosition = numChars - 1
+        glowDirection = -1
+    elseif glowPosition < 1 then
+        glowPosition = 2
+        glowDirection = 1
+    end
+
+    titleMagias:setColoredText(coloredText)
+end)
+
+
+-- Magias Sorcerer
+g_ui.loadUIFromString([[
+ConfigWindow < MainWindow
+  size: 150 140
+
+  Label
+    id: titleMagias
+    text: SPELLS   SPAM
+    font: verdana-11px-rounded
+    color: #a73ec1
+    margin-top: -30
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+
+  Panel
+    id: lista
+    anchors.fill: parent
+    anchors.bottom: closeButton.top
+    layout:
+      type: grid
+      cell-size: 110 15
+      cell-spacing: 2
+
+  Button
+    id: closeButton
+    text: Close
+    font: cipsoftFont
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    size: 45 21
+]])
+
+local panelName = "config"
+if not storage[panelName] then
+  storage[panelName] = {
+    enabled = false,
+  }
+end
+
+local config = storage[panelName]
+
+local rootWidget = g_ui.getRootWidget()
+local configWindow = UI.createWindow('ConfigWindow', rootWidget)
+configWindow:hide()
+
+local listaMacros = {}
+
+-- Macros Spells Spam
+
+local exevovishur = macro(1000, "Vis Hur", function()
+    say("exevo vis hur")
+end)
+
+local exevoflamhur = macro(1000, "Flam Hur", function()
+    say("exevo flam hur")
+end)
+
+local masvis = macro(1000, "Mas Vis", function()
+    say("exevo gran mas vis")
+end)
+
+local masflam = macro(1000, "Mas Flam", function()
+    say("exevo gran mas flam")
+end)
+
+local gfr = macro(1000, "GFR rune", function()  
+    if g_game.isAttacking() then  
+        local attackingCreature = g_game.getAttackingCreature()
+        if attackingCreature and findItem(3191) then  -- Verifica si tienes la runa
+            g_game.useInventoryItemWith(3191, attackingCreature)  
+        end
+    end  
+end, false)
+
+local aoe = macro(1000, "AOE rune", function()  
+    if g_game.isAttacking() then  
+        local attackingCreature = g_game.getAttackingCreature()
+        if attackingCreature and findItem(3161) then  -- Verifica si tienes la runa
+            g_game.useInventoryItemWith(3161, attackingCreature)  
+        end
+    end  
+end, false)
+
+-- Agregar macros a la lista
+
+table.insert(listaMacros, exevovishur)
+table.insert(listaMacros, exevoflamhur)
+table.insert(listaMacros, masvis)
+table.insert(listaMacros, masflam)
+table.insert(listaMacros, gfr)
+table.insert(listaMacros, aoe)
+checkboxes = {}
+
+for _, mac in ipairs(listaMacros) do
+    local checkbox = g_ui.createWidget("CheckBox", configWindow.lista)
+    checkbox:setText(mac.switch:getText())
+    checkbox.onCheckChange = function(wid, isChecked)
+        mac.setOn(isChecked)
+    end
+    checkbox:setChecked(mac.isOn())
+    mac.switch:setVisible(false)
+    table.insert(checkboxes, checkbox)
+    
+    -- Tooltip para "Antipk"
+    if mac.switch:getText() == "Antipk" then
+        checkbox:setTooltip("Este hechizo lanza Sd & si hay mas de 3 monster lanza Mas tera Cuidando no sacar Pk.")
+    end
+end
+
+configWindow.closeButton.onClick = function(widget)
+    configWindow:hide()
+end
+
+-- Boton para abrir la ventana
+local openButton = UI.Button("Spells Sorcerer Spam", function()
+    configWindow:show()
+    configWindow:setFocusable(false)
+    configWindow:raise()
+    configWindow:focus()
+end)
+openButton:setColor("#00FFFF") -- Color cian
+
+-- Animacion de brillo para el titulo
+local titleMagias = configWindow.titleMagias
+local text = "SPELLS   SPAM"
+local glowPosition = 1
+local glowDirection = 1
+
+macro(50, function()
+    local numChars = #text
+    local glowRange = math.max(1, math.floor(numChars / 10)) 
+    local coloredText = {}
+
+    for i = 1, numChars do
+        local char = text:sub(i, i)
+        local color = "#a73ec1" -- Color base
+        if math.abs(i - glowPosition) <= glowRange then
+            color = "#dfbae9" -- Color de brillo
+        end
+        table.insert(coloredText, char)
+        table.insert(coloredText, color)
+    end
+
+    glowPosition = glowPosition + glowDirection
+    if glowPosition > numChars then
+        glowPosition = numChars - 1
+        glowDirection = -1
+    elseif glowPosition < 1 then
+        glowPosition = 2
+        glowDirection = 1
+    end
+
+    titleMagias:setColoredText(coloredText)
+end)
