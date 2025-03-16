@@ -1405,7 +1405,7 @@ end)
 -- Magias Druid
 g_ui.loadUIFromString([[
 ConfigWindow < MainWindow
-  size: 150 140
+  size: 130 180
 
   Label
     id: titleMagias
@@ -1561,7 +1561,7 @@ end)
 -- Magias Sorcerer
 g_ui.loadUIFromString([[
 ConfigWindow < MainWindow
-  size: 150 140
+  size: 130 180
 
   Label
     id: titleMagias
